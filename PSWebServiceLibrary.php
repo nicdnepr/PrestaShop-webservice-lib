@@ -286,6 +286,11 @@ class PrestaShopWebservice
 				foreach ($options as $k => $o)
 					if (strpos($k, $p) !== false)
 						$url_params[$k] = $options[$k];
+
+            if (isset($options['use_reduction'])) {
+                $url_params['price[new_price][use_reduction]'] = 1;
+            }
+
 			if (count($url_params) > 0)
 				$url .= '?'.http_build_query($url_params);
 		}
